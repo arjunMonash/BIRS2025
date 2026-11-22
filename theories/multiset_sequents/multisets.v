@@ -222,7 +222,7 @@ intro H0. destruct H0 ; subst ; destruct form_eq_dec ; subst ; try contradiction
 Qed.
 
 Lemma remove_include θ θ' Δ : (θ' ∈ Δ) -> θ ∈ rm θ' Δ -> θ ∈ Δ.
-Proof. Admitted.
+Proof. intros Hin' Hin. eapply list_elem_of_In, in_rm, list_elem_of_In, Hin. Qed.
       
 
 Lemma rm_notin l ψ : ψ ∉ l -> rm ψ l = l.
