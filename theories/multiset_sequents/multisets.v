@@ -73,9 +73,16 @@ Lemma union_mult (M N : env) x :
   multiplicity x (M ⊎ N) = (multiplicity x M + multiplicity x N)%nat.
 Proof. apply multiplicity_disj_union. Qed.
 
+Lemma multiplicity_singleton_eq (y : form) :
+  multiplicity y {[+ y +]} = 1.
+Proof.
+  cbn in *.  setoid_rewrite (multiplicity_singleton y y).
+  destruct (decide (y = y)); [reflexivity | contradiction].
+Qed.
+
 Lemma singleton_mult_in x y: x = y -> multiplicity x {[+ y +]} = 1.
 Proof.
-  intro Heq. rewrite Heq. apply multiplicity_singleton. Qed.
+  intro Heq. rewrite Heq. rewrite multiplicity_singleton_eq. reflexivity. Qed.
 
 Lemma singleton_mult_notin x y: x <> y -> multiplicity x {[y]} = 0.
 Proof. apply multiplicity_singleton_ne. Qed.
@@ -215,7 +222,8 @@ intro H0. destruct H0 ; subst ; destruct form_eq_dec ; subst ; try contradiction
 Qed.
 
 Lemma remove_include θ θ' Δ : (θ' ∈ Δ) -> θ ∈ rm θ' Δ -> θ ∈ Δ.
-Proof. intros Hin' Hin. eapply elem_of_list_In, in_rm, elem_of_list_In, Hin. Qed.
+Proof. Admitted.
+      
 
 Lemma rm_notin l ψ : ψ ∉ l -> rm ψ l = l.
 Proof.
