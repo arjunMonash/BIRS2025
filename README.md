@@ -8,11 +8,11 @@ Formalisation of proof systems (Hilbert and sequent calculi) for intuitionistic 
 
 #### Coq/Rocq
 
-The development compiles with Coq `8.20.0`.
+The development compiles with Rocq `9.3.1`.
 
 If you do not have a suitable version yet, I suggest:
 
-> `opam pin add coq 8.20.0`
+> `opam pin add rocq 9.3.1`
 
 #### External dependencies
 
@@ -20,10 +20,10 @@ If it is the first time you install rocq libraries with `opam`, you will have to
 
 > `opam repo add rocq-released https://rocq-prover.org/opam/released`
 
-This work depends on two libraries: `coq-coinduction` and `coq-equations`. You can install them by running the following commands. 
+This work depends on two libraries: `rocq-coinduction` and `rocq-equations`. You can install them by running the following commands. 
 
-> `opam install coq-stdpp`
-> `opam install coq-equations`
+> `opam install rocq-stdpp`
+> `opam install rocq-equations`
 
 ## Compiling
 
